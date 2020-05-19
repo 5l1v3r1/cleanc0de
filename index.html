@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebADB | Android Debug Bridge WebApp</title>
+    <title>webADB VortX</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="WebUSB based Android Debug Bridge (adb) host" />
@@ -15,15 +15,11 @@
 <body>
   <form>
     <div id="nowebusb" class="w3-container w3-block w3-sand w3-border w3-border-red w3-left-align w3-round" style="display: none">
-      <p>
-        Ouch! <a href="https://wicg.github.io/webusb">WebUSB API</a> is not supported by your browser.<br>
-        Chrome users may update to version 61.
-      </p>
+     
     </div>
     <div id="disclaimer" data-bind="visible: true" class="w3-container w3-block w3-sand w3-border w3-border-orange w3-left-align w3-round" style="display: none">
       <p>
         VortX Uses ADB over webUSB
-        <a href="https://wicg.github.io/webusb">VortX</a><br>
       </p>
     </div>
     <div data-bind="visible: 'usb' in navigator"
