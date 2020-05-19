@@ -22,12 +22,8 @@
     </div>
     <div id="disclaimer" data-bind="visible: true" class="w3-container w3-block w3-sand w3-border w3-border-orange w3-left-align w3-round" style="display: none">
       <p>
-        This <span data-bind="text: is_webapp() ? 'application' : 'page'"></span> uses the <a href="https://developer.android.com/studio/command-line/adb.html">ADB</a> protocol over
-        <a href="https://wicg.github.io/webusb">WebUSB</a> to access the Android device connected to your PC via USB.
-        The whole elaboration is done locally and under your complete responsibility.<br>
-      </p>
-      <p>
-        <a href="https://labs.mwrinfosecurity.com/blog/webusb/">What could possibly go wrong?</a>
+        VortX Uses ADB over webUSB
+        <a href="https://wicg.github.io/webusb">VortX</a><br>
       </p>
     </div>
     <div data-bind="visible: 'usb' in navigator"
@@ -184,10 +180,10 @@ async function connect_usb()
 			if (adb != null) {
 				console.log("ADB mode");
 				this.state("connected");
-				this.execute_cmd("shell:ls -l /sdcard/Download/test_webadb.txt");
-				this.stat_filename("/sdcard/Download/test_webadb.txt");
-				this.pull_filename("/sdcard/Download/test_webadb.txt");
-				this.push_dest("/sdcard/Download/test_webadb.txt");
+				this.execute_cmd("shell:getprop");
+				this.stat_filename("/sdcard/Download");
+				this.pull_filename("/sdcard/Download");
+				this.push_dest("/sdcard/Download");
 				this.push_mode("0644");
 			}
 		}
@@ -208,7 +204,7 @@ async function connect_usb()
 	if (webusb.isFastboot())
 		message = "FASTBOOT: ";
 
-	message += webusb.device.productName + " (" + webusb.device.manufacturerName + ")";
+	message += webusb.device.productName + webusb.device.serialNumber + " (" + webusb.device.manufacturerName + ")";
 	this.connect_message(message);
 }
 
